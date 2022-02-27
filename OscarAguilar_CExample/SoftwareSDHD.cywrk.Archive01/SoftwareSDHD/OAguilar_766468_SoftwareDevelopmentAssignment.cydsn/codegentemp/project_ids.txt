@@ -1,0 +1,6 @@
+D:\Semester\SecondSemester\SDHD\thirdpart\OscarAguilar_766468_BandpassTestAssignment\SoftwareSDHD.cywrk.Archive01\SoftwareSDHD\OAguilar_766468_SoftwareDevelopmentAssignment.cydsn\OAguilar_766468_SoftwareDevelopmentAssignment.cyprj|dd652081-9ec5-4223-92eb-5ccaf790bbef
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e0cd2418-1c9c-4406-a98e-af6a7c51a2e3
+C:\Users\oscar\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|5baad564-8d0e-4323-a2b4-71ee99290745
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|37adff08-49ed-4386-b1d4-2a2c600927ab
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|9f161884-d4ab-4ee0-9f7c-e5a80d036bdb
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|72ff0648-6bb5-4f2e-ace9-e87f477d3cc0

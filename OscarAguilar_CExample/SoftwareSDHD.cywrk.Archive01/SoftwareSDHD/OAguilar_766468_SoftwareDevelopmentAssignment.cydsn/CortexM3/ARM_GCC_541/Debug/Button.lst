@@ -1,0 +1,760 @@
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Button.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ISR_BUTTON,"ax",%progbits
+  20              		.align	2
+  21              		.global	ISR_BUTTON
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	ISR_BUTTON, %function
+  25              	ISR_BUTTON:
+  26              	.LFB64:
+  27              		.file 1 "source\\bsw\\Button.c"
+   1:source\bsw/Button.c **** #include "Button.h" 
+   2:source\bsw/Button.c **** #include "LEDS.h"
+   3:source\bsw/Button.c **** 
+   4:source\bsw/Button.c **** 
+   5:source\bsw/Button.c **** 
+   6:source\bsw/Button.c **** void Button_Init()
+   7:source\bsw/Button.c **** {
+   8:source\bsw/Button.c ****     isr_Button_StartEx(ISR_BUTTON);
+   9:source\bsw/Button.c ****     
+  10:source\bsw/Button.c **** }
+  11:source\bsw/Button.c **** 
+  12:source\bsw/Button.c **** CY_ISR(ISR_BUTTON)
+  13:source\bsw/Button.c **** {
+  28              		.loc 1 13 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  14:source\bsw/Button.c ****     //CLEAR_PENDING ISR
+  15:source\bsw/Button.c ****     isr_Button_ClearPending();
+  36              		.loc 1 15 0
+  37 0002 FFF7FEFF 		bl	isr_Button_ClearPending
+  38              	.LVL0:
+  16:source\bsw/Button.c ****     buttonFlag=true;
+  39              		.loc 1 16 0
+  40 0006 0122     		movs	r2, #1
+  41 0008 014B     		ldr	r3, .L3
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 2
+
+
+  42 000a 1A70     		strb	r2, [r3]
+  43 000c 08BD     		pop	{r3, pc}
+  44              	.L4:
+  45 000e 00BF     		.align	2
+  46              	.L3:
+  47 0010 00000000 		.word	buttonFlag
+  48              		.cfi_endproc
+  49              	.LFE64:
+  50              		.size	ISR_BUTTON, .-ISR_BUTTON
+  51              		.section	.text.Button_Init,"ax",%progbits
+  52              		.align	2
+  53              		.global	Button_Init
+  54              		.thumb
+  55              		.thumb_func
+  56              		.type	Button_Init, %function
+  57              	Button_Init:
+  58              	.LFB63:
+   7:source\bsw/Button.c ****     isr_Button_StartEx(ISR_BUTTON);
+  59              		.loc 1 7 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 08B5     		push	{r3, lr}
+  64              		.cfi_def_cfa_offset 8
+  65              		.cfi_offset 3, -8
+  66              		.cfi_offset 14, -4
+   8:source\bsw/Button.c ****     
+  67              		.loc 1 8 0
+  68 0002 0248     		ldr	r0, .L7
+  69 0004 FFF7FEFF 		bl	isr_Button_StartEx
+  70              	.LVL1:
+  71 0008 08BD     		pop	{r3, pc}
+  72              	.L8:
+  73 000a 00BF     		.align	2
+  74              	.L7:
+  75 000c 00000000 		.word	ISR_BUTTON
+  76              		.cfi_endproc
+  77              	.LFE63:
+  78              		.size	Button_Init, .-Button_Init
+  79              		.section	.text.buttonFlagClear,"ax",%progbits
+  80              		.align	2
+  81              		.global	buttonFlagClear
+  82              		.thumb
+  83              		.thumb_func
+  84              		.type	buttonFlagClear, %function
+  85              	buttonFlagClear:
+  86              	.LFB65:
+  17:source\bsw/Button.c ****     
+  18:source\bsw/Button.c **** }
+  19:source\bsw/Button.c **** void buttonFlagClear()
+  20:source\bsw/Button.c **** {
+  87              		.loc 1 20 0
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 0
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91              		@ link register save eliminated.
+  21:source\bsw/Button.c ****     buttonFlag=false;
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 3
+
+
+  92              		.loc 1 21 0
+  93 0000 0022     		movs	r2, #0
+  94 0002 014B     		ldr	r3, .L10
+  95 0004 1A70     		strb	r2, [r3]
+  96 0006 7047     		bx	lr
+  97              	.L11:
+  98              		.align	2
+  99              	.L10:
+ 100 0008 00000000 		.word	buttonFlag
+ 101              		.cfi_endproc
+ 102              	.LFE65:
+ 103              		.size	buttonFlagClear, .-buttonFlagClear
+ 104              		.text
+ 105              	.Letext0:
+ 106              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 107              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 108              		.file 4 ".\\source\\asw/cyapicallbacks.h"
+ 109              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 110              		.file 6 "source\\bsw\\Button.h"
+ 111              		.file 7 "Generated_Source\\PSoC5/isr_Button.h"
+ 112              		.section	.debug_info,"",%progbits
+ 113              	.Ldebug_info0:
+ 114 0000 55010000 		.4byte	0x155
+ 115 0004 0400     		.2byte	0x4
+ 116 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 117 000a 04       		.byte	0x4
+ 118 000b 01       		.uleb128 0x1
+ 119 000c 5C000000 		.4byte	.LASF23
+ 120 0010 0C       		.byte	0xc
+ 121 0011 24020000 		.4byte	.LASF24
+ 122 0015 FC000000 		.4byte	.LASF25
+ 123 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 124 001d 00000000 		.4byte	0
+ 125 0021 00000000 		.4byte	.Ldebug_line0
+ 126 0025 02       		.uleb128 0x2
+ 127 0026 01       		.byte	0x1
+ 128 0027 06       		.byte	0x6
+ 129 0028 0C020000 		.4byte	.LASF0
+ 130 002c 02       		.uleb128 0x2
+ 131 002d 01       		.byte	0x1
+ 132 002e 08       		.byte	0x8
+ 133 002f B3010000 		.4byte	.LASF1
+ 134 0033 02       		.uleb128 0x2
+ 135 0034 02       		.byte	0x2
+ 136 0035 05       		.byte	0x5
+ 137 0036 48020000 		.4byte	.LASF2
+ 138 003a 02       		.uleb128 0x2
+ 139 003b 02       		.byte	0x2
+ 140 003c 07       		.byte	0x7
+ 141 003d 84010000 		.4byte	.LASF3
+ 142 0041 03       		.uleb128 0x3
+ 143 0042 38020000 		.4byte	.LASF9
+ 144 0046 02       		.byte	0x2
+ 145 0047 3F       		.byte	0x3f
+ 146 0048 4C000000 		.4byte	0x4c
+ 147 004c 02       		.uleb128 0x2
+ 148 004d 04       		.byte	0x4
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 4
+
+
+ 149 004e 05       		.byte	0x5
+ 150 004f DE010000 		.4byte	.LASF4
+ 151 0053 02       		.uleb128 0x2
+ 152 0054 04       		.byte	0x4
+ 153 0055 07       		.byte	0x7
+ 154 0056 EA000000 		.4byte	.LASF5
+ 155 005a 02       		.uleb128 0x2
+ 156 005b 08       		.byte	0x8
+ 157 005c 05       		.byte	0x5
+ 158 005d 00000000 		.4byte	.LASF6
+ 159 0061 02       		.uleb128 0x2
+ 160 0062 08       		.byte	0x8
+ 161 0063 07       		.byte	0x7
+ 162 0064 9C010000 		.4byte	.LASF7
+ 163 0068 04       		.uleb128 0x4
+ 164 0069 04       		.byte	0x4
+ 165 006a 05       		.byte	0x5
+ 166 006b 696E7400 		.ascii	"int\000"
+ 167 006f 02       		.uleb128 0x2
+ 168 0070 04       		.byte	0x4
+ 169 0071 07       		.byte	0x7
+ 170 0072 19000000 		.4byte	.LASF8
+ 171 0076 03       		.uleb128 0x3
+ 172 0077 52020000 		.4byte	.LASF10
+ 173 007b 03       		.byte	0x3
+ 174 007c 2C       		.byte	0x2c
+ 175 007d 41000000 		.4byte	0x41
+ 176 0081 02       		.uleb128 0x2
+ 177 0082 04       		.byte	0x4
+ 178 0083 04       		.byte	0x4
+ 179 0084 42020000 		.4byte	.LASF11
+ 180 0088 02       		.uleb128 0x2
+ 181 0089 08       		.byte	0x8
+ 182 008a 04       		.byte	0x4
+ 183 008b E7010000 		.4byte	.LASF12
+ 184 008f 02       		.uleb128 0x2
+ 185 0090 01       		.byte	0x1
+ 186 0091 08       		.byte	0x8
+ 187 0092 C1010000 		.4byte	.LASF13
+ 188 0096 02       		.uleb128 0x2
+ 189 0097 08       		.byte	0x8
+ 190 0098 04       		.byte	0x4
+ 191 0099 18020000 		.4byte	.LASF14
+ 192 009d 02       		.uleb128 0x2
+ 193 009e 04       		.byte	0x4
+ 194 009f 07       		.byte	0x7
+ 195 00a0 5A020000 		.4byte	.LASF15
+ 196 00a4 05       		.uleb128 0x5
+ 197 00a5 01       		.byte	0x1
+ 198 00a6 2C000000 		.4byte	0x2c
+ 199 00aa 04       		.byte	0x4
+ 200 00ab 15       		.byte	0x15
+ 201 00ac BD000000 		.4byte	0xbd
+ 202 00b0 06       		.uleb128 0x6
+ 203 00b1 F9010000 		.4byte	.LASF16
+ 204 00b5 00       		.byte	0
+ 205 00b6 06       		.uleb128 0x6
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 5
+
+
+ 206 00b7 97010000 		.4byte	.LASF17
+ 207 00bb 01       		.byte	0x1
+ 208 00bc 00       		.byte	0
+ 209 00bd 03       		.uleb128 0x3
+ 210 00be 55000000 		.4byte	.LASF18
+ 211 00c2 04       		.byte	0x4
+ 212 00c3 18       		.byte	0x18
+ 213 00c4 A4000000 		.4byte	0xa4
+ 214 00c8 07       		.uleb128 0x7
+ 215 00c9 EE010000 		.4byte	.LASF26
+ 216 00cd 01       		.byte	0x1
+ 217 00ce 0C       		.byte	0xc
+ 218 00cf 00000000 		.4byte	.LFB64
+ 219 00d3 14000000 		.4byte	.LFE64-.LFB64
+ 220 00d7 01       		.uleb128 0x1
+ 221 00d8 9C       		.byte	0x9c
+ 222 00d9 E7000000 		.4byte	0xe7
+ 223 00dd 08       		.uleb128 0x8
+ 224 00de 06000000 		.4byte	.LVL0
+ 225 00e2 42010000 		.4byte	0x142
+ 226 00e6 00       		.byte	0
+ 227 00e7 09       		.uleb128 0x9
+ 228 00e8 26000000 		.4byte	.LASF27
+ 229 00ec 01       		.byte	0x1
+ 230 00ed 06       		.byte	0x6
+ 231 00ee 00000000 		.4byte	.LFB63
+ 232 00f2 10000000 		.4byte	.LFE63-.LFB63
+ 233 00f6 01       		.uleb128 0x1
+ 234 00f7 9C       		.byte	0x9c
+ 235 00f8 10010000 		.4byte	0x110
+ 236 00fc 0A       		.uleb128 0xa
+ 237 00fd 08000000 		.4byte	.LVL1
+ 238 0101 4D010000 		.4byte	0x14d
+ 239 0105 0B       		.uleb128 0xb
+ 240 0106 01       		.uleb128 0x1
+ 241 0107 50       		.byte	0x50
+ 242 0108 05       		.uleb128 0x5
+ 243 0109 03       		.byte	0x3
+ 244 010a 00000000 		.4byte	ISR_BUTTON
+ 245 010e 00       		.byte	0
+ 246 010f 00       		.byte	0
+ 247 0110 0C       		.uleb128 0xc
+ 248 0111 45000000 		.4byte	.LASF28
+ 249 0115 01       		.byte	0x1
+ 250 0116 13       		.byte	0x13
+ 251 0117 00000000 		.4byte	.LFB65
+ 252 011b 0C000000 		.4byte	.LFE65-.LFB65
+ 253 011f 01       		.uleb128 0x1
+ 254 0120 9C       		.byte	0x9c
+ 255 0121 0D       		.uleb128 0xd
+ 256 0122 FF010000 		.4byte	.LASF19
+ 257 0126 05       		.byte	0x5
+ 258 0127 1207     		.2byte	0x712
+ 259 0129 2D010000 		.4byte	0x12d
+ 260 012d 0E       		.uleb128 0xe
+ 261 012e 76000000 		.4byte	0x76
+ 262 0132 0F       		.uleb128 0xf
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 6
+
+
+ 263 0133 0E000000 		.4byte	.LASF20
+ 264 0137 06       		.byte	0x6
+ 265 0138 0C       		.byte	0xc
+ 266 0139 3D010000 		.4byte	0x13d
+ 267 013d 0E       		.uleb128 0xe
+ 268 013e BD000000 		.4byte	0xbd
+ 269 0142 10       		.uleb128 0x10
+ 270 0143 C6010000 		.4byte	.LASF21
+ 271 0147 C6010000 		.4byte	.LASF21
+ 272 014b 07       		.byte	0x7
+ 273 014c 28       		.byte	0x28
+ 274 014d 10       		.uleb128 0x10
+ 275 014e 32000000 		.4byte	.LASF22
+ 276 0152 32000000 		.4byte	.LASF22
+ 277 0156 07       		.byte	0x7
+ 278 0157 18       		.byte	0x18
+ 279 0158 00       		.byte	0
+ 280              		.section	.debug_abbrev,"",%progbits
+ 281              	.Ldebug_abbrev0:
+ 282 0000 01       		.uleb128 0x1
+ 283 0001 11       		.uleb128 0x11
+ 284 0002 01       		.byte	0x1
+ 285 0003 25       		.uleb128 0x25
+ 286 0004 0E       		.uleb128 0xe
+ 287 0005 13       		.uleb128 0x13
+ 288 0006 0B       		.uleb128 0xb
+ 289 0007 03       		.uleb128 0x3
+ 290 0008 0E       		.uleb128 0xe
+ 291 0009 1B       		.uleb128 0x1b
+ 292 000a 0E       		.uleb128 0xe
+ 293 000b 55       		.uleb128 0x55
+ 294 000c 17       		.uleb128 0x17
+ 295 000d 11       		.uleb128 0x11
+ 296 000e 01       		.uleb128 0x1
+ 297 000f 10       		.uleb128 0x10
+ 298 0010 17       		.uleb128 0x17
+ 299 0011 00       		.byte	0
+ 300 0012 00       		.byte	0
+ 301 0013 02       		.uleb128 0x2
+ 302 0014 24       		.uleb128 0x24
+ 303 0015 00       		.byte	0
+ 304 0016 0B       		.uleb128 0xb
+ 305 0017 0B       		.uleb128 0xb
+ 306 0018 3E       		.uleb128 0x3e
+ 307 0019 0B       		.uleb128 0xb
+ 308 001a 03       		.uleb128 0x3
+ 309 001b 0E       		.uleb128 0xe
+ 310 001c 00       		.byte	0
+ 311 001d 00       		.byte	0
+ 312 001e 03       		.uleb128 0x3
+ 313 001f 16       		.uleb128 0x16
+ 314 0020 00       		.byte	0
+ 315 0021 03       		.uleb128 0x3
+ 316 0022 0E       		.uleb128 0xe
+ 317 0023 3A       		.uleb128 0x3a
+ 318 0024 0B       		.uleb128 0xb
+ 319 0025 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 7
+
+
+ 320 0026 0B       		.uleb128 0xb
+ 321 0027 49       		.uleb128 0x49
+ 322 0028 13       		.uleb128 0x13
+ 323 0029 00       		.byte	0
+ 324 002a 00       		.byte	0
+ 325 002b 04       		.uleb128 0x4
+ 326 002c 24       		.uleb128 0x24
+ 327 002d 00       		.byte	0
+ 328 002e 0B       		.uleb128 0xb
+ 329 002f 0B       		.uleb128 0xb
+ 330 0030 3E       		.uleb128 0x3e
+ 331 0031 0B       		.uleb128 0xb
+ 332 0032 03       		.uleb128 0x3
+ 333 0033 08       		.uleb128 0x8
+ 334 0034 00       		.byte	0
+ 335 0035 00       		.byte	0
+ 336 0036 05       		.uleb128 0x5
+ 337 0037 04       		.uleb128 0x4
+ 338 0038 01       		.byte	0x1
+ 339 0039 0B       		.uleb128 0xb
+ 340 003a 0B       		.uleb128 0xb
+ 341 003b 49       		.uleb128 0x49
+ 342 003c 13       		.uleb128 0x13
+ 343 003d 3A       		.uleb128 0x3a
+ 344 003e 0B       		.uleb128 0xb
+ 345 003f 3B       		.uleb128 0x3b
+ 346 0040 0B       		.uleb128 0xb
+ 347 0041 01       		.uleb128 0x1
+ 348 0042 13       		.uleb128 0x13
+ 349 0043 00       		.byte	0
+ 350 0044 00       		.byte	0
+ 351 0045 06       		.uleb128 0x6
+ 352 0046 28       		.uleb128 0x28
+ 353 0047 00       		.byte	0
+ 354 0048 03       		.uleb128 0x3
+ 355 0049 0E       		.uleb128 0xe
+ 356 004a 1C       		.uleb128 0x1c
+ 357 004b 0B       		.uleb128 0xb
+ 358 004c 00       		.byte	0
+ 359 004d 00       		.byte	0
+ 360 004e 07       		.uleb128 0x7
+ 361 004f 2E       		.uleb128 0x2e
+ 362 0050 01       		.byte	0x1
+ 363 0051 3F       		.uleb128 0x3f
+ 364 0052 19       		.uleb128 0x19
+ 365 0053 03       		.uleb128 0x3
+ 366 0054 0E       		.uleb128 0xe
+ 367 0055 3A       		.uleb128 0x3a
+ 368 0056 0B       		.uleb128 0xb
+ 369 0057 3B       		.uleb128 0x3b
+ 370 0058 0B       		.uleb128 0xb
+ 371 0059 27       		.uleb128 0x27
+ 372 005a 19       		.uleb128 0x19
+ 373 005b 11       		.uleb128 0x11
+ 374 005c 01       		.uleb128 0x1
+ 375 005d 12       		.uleb128 0x12
+ 376 005e 06       		.uleb128 0x6
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 8
+
+
+ 377 005f 40       		.uleb128 0x40
+ 378 0060 18       		.uleb128 0x18
+ 379 0061 9742     		.uleb128 0x2117
+ 380 0063 19       		.uleb128 0x19
+ 381 0064 01       		.uleb128 0x1
+ 382 0065 13       		.uleb128 0x13
+ 383 0066 00       		.byte	0
+ 384 0067 00       		.byte	0
+ 385 0068 08       		.uleb128 0x8
+ 386 0069 898201   		.uleb128 0x4109
+ 387 006c 00       		.byte	0
+ 388 006d 11       		.uleb128 0x11
+ 389 006e 01       		.uleb128 0x1
+ 390 006f 31       		.uleb128 0x31
+ 391 0070 13       		.uleb128 0x13
+ 392 0071 00       		.byte	0
+ 393 0072 00       		.byte	0
+ 394 0073 09       		.uleb128 0x9
+ 395 0074 2E       		.uleb128 0x2e
+ 396 0075 01       		.byte	0x1
+ 397 0076 3F       		.uleb128 0x3f
+ 398 0077 19       		.uleb128 0x19
+ 399 0078 03       		.uleb128 0x3
+ 400 0079 0E       		.uleb128 0xe
+ 401 007a 3A       		.uleb128 0x3a
+ 402 007b 0B       		.uleb128 0xb
+ 403 007c 3B       		.uleb128 0x3b
+ 404 007d 0B       		.uleb128 0xb
+ 405 007e 11       		.uleb128 0x11
+ 406 007f 01       		.uleb128 0x1
+ 407 0080 12       		.uleb128 0x12
+ 408 0081 06       		.uleb128 0x6
+ 409 0082 40       		.uleb128 0x40
+ 410 0083 18       		.uleb128 0x18
+ 411 0084 9742     		.uleb128 0x2117
+ 412 0086 19       		.uleb128 0x19
+ 413 0087 01       		.uleb128 0x1
+ 414 0088 13       		.uleb128 0x13
+ 415 0089 00       		.byte	0
+ 416 008a 00       		.byte	0
+ 417 008b 0A       		.uleb128 0xa
+ 418 008c 898201   		.uleb128 0x4109
+ 419 008f 01       		.byte	0x1
+ 420 0090 11       		.uleb128 0x11
+ 421 0091 01       		.uleb128 0x1
+ 422 0092 31       		.uleb128 0x31
+ 423 0093 13       		.uleb128 0x13
+ 424 0094 00       		.byte	0
+ 425 0095 00       		.byte	0
+ 426 0096 0B       		.uleb128 0xb
+ 427 0097 8A8201   		.uleb128 0x410a
+ 428 009a 00       		.byte	0
+ 429 009b 02       		.uleb128 0x2
+ 430 009c 18       		.uleb128 0x18
+ 431 009d 9142     		.uleb128 0x2111
+ 432 009f 18       		.uleb128 0x18
+ 433 00a0 00       		.byte	0
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 9
+
+
+ 434 00a1 00       		.byte	0
+ 435 00a2 0C       		.uleb128 0xc
+ 436 00a3 2E       		.uleb128 0x2e
+ 437 00a4 00       		.byte	0
+ 438 00a5 3F       		.uleb128 0x3f
+ 439 00a6 19       		.uleb128 0x19
+ 440 00a7 03       		.uleb128 0x3
+ 441 00a8 0E       		.uleb128 0xe
+ 442 00a9 3A       		.uleb128 0x3a
+ 443 00aa 0B       		.uleb128 0xb
+ 444 00ab 3B       		.uleb128 0x3b
+ 445 00ac 0B       		.uleb128 0xb
+ 446 00ad 11       		.uleb128 0x11
+ 447 00ae 01       		.uleb128 0x1
+ 448 00af 12       		.uleb128 0x12
+ 449 00b0 06       		.uleb128 0x6
+ 450 00b1 40       		.uleb128 0x40
+ 451 00b2 18       		.uleb128 0x18
+ 452 00b3 9742     		.uleb128 0x2117
+ 453 00b5 19       		.uleb128 0x19
+ 454 00b6 00       		.byte	0
+ 455 00b7 00       		.byte	0
+ 456 00b8 0D       		.uleb128 0xd
+ 457 00b9 34       		.uleb128 0x34
+ 458 00ba 00       		.byte	0
+ 459 00bb 03       		.uleb128 0x3
+ 460 00bc 0E       		.uleb128 0xe
+ 461 00bd 3A       		.uleb128 0x3a
+ 462 00be 0B       		.uleb128 0xb
+ 463 00bf 3B       		.uleb128 0x3b
+ 464 00c0 05       		.uleb128 0x5
+ 465 00c1 49       		.uleb128 0x49
+ 466 00c2 13       		.uleb128 0x13
+ 467 00c3 3F       		.uleb128 0x3f
+ 468 00c4 19       		.uleb128 0x19
+ 469 00c5 3C       		.uleb128 0x3c
+ 470 00c6 19       		.uleb128 0x19
+ 471 00c7 00       		.byte	0
+ 472 00c8 00       		.byte	0
+ 473 00c9 0E       		.uleb128 0xe
+ 474 00ca 35       		.uleb128 0x35
+ 475 00cb 00       		.byte	0
+ 476 00cc 49       		.uleb128 0x49
+ 477 00cd 13       		.uleb128 0x13
+ 478 00ce 00       		.byte	0
+ 479 00cf 00       		.byte	0
+ 480 00d0 0F       		.uleb128 0xf
+ 481 00d1 34       		.uleb128 0x34
+ 482 00d2 00       		.byte	0
+ 483 00d3 03       		.uleb128 0x3
+ 484 00d4 0E       		.uleb128 0xe
+ 485 00d5 3A       		.uleb128 0x3a
+ 486 00d6 0B       		.uleb128 0xb
+ 487 00d7 3B       		.uleb128 0x3b
+ 488 00d8 0B       		.uleb128 0xb
+ 489 00d9 49       		.uleb128 0x49
+ 490 00da 13       		.uleb128 0x13
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 10
+
+
+ 491 00db 3F       		.uleb128 0x3f
+ 492 00dc 19       		.uleb128 0x19
+ 493 00dd 3C       		.uleb128 0x3c
+ 494 00de 19       		.uleb128 0x19
+ 495 00df 00       		.byte	0
+ 496 00e0 00       		.byte	0
+ 497 00e1 10       		.uleb128 0x10
+ 498 00e2 2E       		.uleb128 0x2e
+ 499 00e3 00       		.byte	0
+ 500 00e4 3F       		.uleb128 0x3f
+ 501 00e5 19       		.uleb128 0x19
+ 502 00e6 3C       		.uleb128 0x3c
+ 503 00e7 19       		.uleb128 0x19
+ 504 00e8 6E       		.uleb128 0x6e
+ 505 00e9 0E       		.uleb128 0xe
+ 506 00ea 03       		.uleb128 0x3
+ 507 00eb 0E       		.uleb128 0xe
+ 508 00ec 3A       		.uleb128 0x3a
+ 509 00ed 0B       		.uleb128 0xb
+ 510 00ee 3B       		.uleb128 0x3b
+ 511 00ef 0B       		.uleb128 0xb
+ 512 00f0 00       		.byte	0
+ 513 00f1 00       		.byte	0
+ 514 00f2 00       		.byte	0
+ 515              		.section	.debug_aranges,"",%progbits
+ 516 0000 2C000000 		.4byte	0x2c
+ 517 0004 0200     		.2byte	0x2
+ 518 0006 00000000 		.4byte	.Ldebug_info0
+ 519 000a 04       		.byte	0x4
+ 520 000b 00       		.byte	0
+ 521 000c 0000     		.2byte	0
+ 522 000e 0000     		.2byte	0
+ 523 0010 00000000 		.4byte	.LFB64
+ 524 0014 14000000 		.4byte	.LFE64-.LFB64
+ 525 0018 00000000 		.4byte	.LFB63
+ 526 001c 10000000 		.4byte	.LFE63-.LFB63
+ 527 0020 00000000 		.4byte	.LFB65
+ 528 0024 0C000000 		.4byte	.LFE65-.LFB65
+ 529 0028 00000000 		.4byte	0
+ 530 002c 00000000 		.4byte	0
+ 531              		.section	.debug_ranges,"",%progbits
+ 532              	.Ldebug_ranges0:
+ 533 0000 00000000 		.4byte	.LFB64
+ 534 0004 14000000 		.4byte	.LFE64
+ 535 0008 00000000 		.4byte	.LFB63
+ 536 000c 10000000 		.4byte	.LFE63
+ 537 0010 00000000 		.4byte	.LFB65
+ 538 0014 0C000000 		.4byte	.LFE65
+ 539 0018 00000000 		.4byte	0
+ 540 001c 00000000 		.4byte	0
+ 541              		.section	.debug_line,"",%progbits
+ 542              	.Ldebug_line0:
+ 543 0000 BE010000 		.section	.debug_str,"MS",%progbits,1
+ 543      02008901 
+ 543      00000201 
+ 543      FB0E0D00 
+ 543      01010101 
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 11
+
+
+ 544              	.LASF6:
+ 545 0000 6C6F6E67 		.ascii	"long long int\000"
+ 545      206C6F6E 
+ 545      6720696E 
+ 545      7400
+ 546              	.LASF20:
+ 547 000e 62757474 		.ascii	"buttonFlag\000"
+ 547      6F6E466C 
+ 547      616700
+ 548              	.LASF8:
+ 549 0019 756E7369 		.ascii	"unsigned int\000"
+ 549      676E6564 
+ 549      20696E74 
+ 549      00
+ 550              	.LASF27:
+ 551 0026 42757474 		.ascii	"Button_Init\000"
+ 551      6F6E5F49 
+ 551      6E697400 
+ 552              	.LASF22:
+ 553 0032 6973725F 		.ascii	"isr_Button_StartEx\000"
+ 553      42757474 
+ 553      6F6E5F53 
+ 553      74617274 
+ 553      457800
+ 554              	.LASF28:
+ 555 0045 62757474 		.ascii	"buttonFlagClear\000"
+ 555      6F6E466C 
+ 555      6167436C 
+ 555      65617200 
+ 556              	.LASF18:
+ 557 0055 626F6F6C 		.ascii	"bool_t\000"
+ 557      5F7400
+ 558              	.LASF23:
+ 559 005c 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 559      43313120 
+ 559      352E342E 
+ 559      31203230 
+ 559      31363036 
+ 560 008f 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 560      20726576 
+ 560      6973696F 
+ 560      6E203233 
+ 560      37373135 
+ 561 00c2 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 561      66756E63 
+ 561      74696F6E 
+ 561      2D736563 
+ 561      74696F6E 
+ 562              	.LASF5:
+ 563 00ea 6C6F6E67 		.ascii	"long unsigned int\000"
+ 563      20756E73 
+ 563      69676E65 
+ 563      6420696E 
+ 563      7400
+ 564              	.LASF25:
+ 565 00fc 443A5C53 		.ascii	"D:\\Semester\\SecondSemester\\SDHD\\thirdpart\\Soft"
+ 565      656D6573 
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 12
+
+
+ 565      7465725C 
+ 565      5365636F 
+ 565      6E645365 
+ 566 012a 77617265 		.ascii	"wareSDHD.cywrk.Archive01\\SoftwareSDHD\\OAguilar_76"
+ 566      53444844 
+ 566      2E637977 
+ 566      726B2E41 
+ 566      72636869 
+ 567 015b 36343638 		.ascii	"6468_SoftwareDevelopmentAssignment.cydsn\000"
+ 567      5F536F66 
+ 567      74776172 
+ 567      65446576 
+ 567      656C6F70 
+ 568              	.LASF3:
+ 569 0184 73686F72 		.ascii	"short unsigned int\000"
+ 569      7420756E 
+ 569      7369676E 
+ 569      65642069 
+ 569      6E7400
+ 570              	.LASF17:
+ 571 0197 74727565 		.ascii	"true\000"
+ 571      00
+ 572              	.LASF7:
+ 573 019c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 573      206C6F6E 
+ 573      6720756E 
+ 573      7369676E 
+ 573      65642069 
+ 574              	.LASF1:
+ 575 01b3 756E7369 		.ascii	"unsigned char\000"
+ 575      676E6564 
+ 575      20636861 
+ 575      7200
+ 576              	.LASF13:
+ 577 01c1 63686172 		.ascii	"char\000"
+ 577      00
+ 578              	.LASF21:
+ 579 01c6 6973725F 		.ascii	"isr_Button_ClearPending\000"
+ 579      42757474 
+ 579      6F6E5F43 
+ 579      6C656172 
+ 579      50656E64 
+ 580              	.LASF4:
+ 581 01de 6C6F6E67 		.ascii	"long int\000"
+ 581      20696E74 
+ 581      00
+ 582              	.LASF12:
+ 583 01e7 646F7562 		.ascii	"double\000"
+ 583      6C6500
+ 584              	.LASF26:
+ 585 01ee 4953525F 		.ascii	"ISR_BUTTON\000"
+ 585      42555454 
+ 585      4F4E00
+ 586              	.LASF16:
+ 587 01f9 66616C73 		.ascii	"false\000"
+ 587      6500
+ 588              	.LASF19:
+ARM GAS  C:\Users\oscar\AppData\Local\Temp\ccXCAfkl.s 			page 13
+
+
+ 589 01ff 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 589      52784275 
+ 589      66666572 
+ 589      00
+ 590              	.LASF0:
+ 591 020c 7369676E 		.ascii	"signed char\000"
+ 591      65642063 
+ 591      68617200 
+ 592              	.LASF14:
+ 593 0218 6C6F6E67 		.ascii	"long double\000"
+ 593      20646F75 
+ 593      626C6500 
+ 594              	.LASF24:
+ 595 0224 736F7572 		.ascii	"source\\bsw\\Button.c\000"
+ 595      63655C62 
+ 595      73775C42 
+ 595      7574746F 
+ 595      6E2E6300 
+ 596              	.LASF9:
+ 597 0238 5F5F696E 		.ascii	"__int32_t\000"
+ 597      7433325F 
+ 597      7400
+ 598              	.LASF11:
+ 599 0242 666C6F61 		.ascii	"float\000"
+ 599      7400
+ 600              	.LASF2:
+ 601 0248 73686F72 		.ascii	"short int\000"
+ 601      7420696E 
+ 601      7400
+ 602              	.LASF10:
+ 603 0252 696E7433 		.ascii	"int32_t\000"
+ 603      325F7400 
+ 604              	.LASF15:
+ 605 025a 73697A65 		.ascii	"sizetype\000"
+ 605      74797065 
+ 605      00
+ 606              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
